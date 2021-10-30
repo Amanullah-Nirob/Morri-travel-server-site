@@ -72,7 +72,7 @@ async function run() {
        const quary={_id:ObjectId(id)}
        const result=await orders.deleteOne(quary)
        res.json(result)
-       
+        
     })
 
     // specific orders id update
