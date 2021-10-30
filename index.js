@@ -4,7 +4,7 @@ const app = express()
 const ObjectId=require(`mongodb`).ObjectId
 var cors = require('cors')
 require('dotenv').config()
-const port = 5000
+const port =process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
@@ -14,7 +14,7 @@ app.use(express.json())
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.amixw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
+console.log(uri);
 
 async function run() {
     try {
@@ -23,7 +23,7 @@ async function run() {
       const Services = database.collection("services");
       const orders = database.collection("orders");
 
-     
+     console.log(`working`);
     //   services get api
    app.get(`/services`,async(req,res)=>{
        const cursor=Services.find({})
